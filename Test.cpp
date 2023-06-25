@@ -1,45 +1,64 @@
 #include "Main.cpp"
+#define LENGTH(ary) (sizeof(ary) / sizeof(*ary))
 
-const vector<int> Ms = {
-	2,
-	3,
-	2
-};
-
-const vector<int> Ns = {
-	3,
+constexpr int radii[] = {
 	1,
-	2
-};
-
-const vector<int> introvertsCounts = {
 	1,
-	2,
-	4
+	1
 };
 
-const vector<int> extrovertsCounts = {
-	2,
+constexpr int xCenters[] = {
+	0,
 	1,
 	0
 };
 
-const vector<int> answers = {
-	240,
-	260,
-	240
+constexpr int yCenters[] = {
+	0,
+	1,
+	0
 };
 
-bool judge(int result, int ans) {
+constexpr int x1s[] = {
+	1,
+	1,
+	-1
+};
+
+constexpr int y1s[] = {
+	-1,
+	-3,
+	0
+};
+
+constexpr int x2s[] = {
+	3,
+	2,
+	0
+};
+
+constexpr int y2s[] = {
+	1,
+	-1,
+	1
+};
+
+constexpr bool answers[] = {
+	true,
+	false,
+	true
+};
+
+bool judge(bool result, bool ans) {
 	return result == ans;
 }
 
 
 int main() {
-	size_t len = min({ Ms.size(), Ns.size(), introvertsCounts.size(), extrovertsCounts.size(), answers.size() });
+	size_t size = min({LENGTH(radii), LENGTH(xCenters), LENGTH(yCenters), LENGTH(x1s), LENGTH(x2s), LENGTH(y1s), LENGTH(y2s), LENGTH(answers)});
 	Solution solve;
-	for (size_t i = 0; i < len; ++i) {
-		int result = solve.getMaxGridHappiness(Ms[i], Ns[i], introvertsCounts[i], extrovertsCounts[i]);
+	for (size_t i = 0; i < size; ++i) {
+		const auto result = solve.checkOverlap(radii[i], xCenters[i], yCenters[i], x1s[i], y1s[i], x2s[i], y2s[i]);
 		if (!judge(result, answers[i])) return EXIT_FAILURE;
 	}
 	return EXIT_SUCCESS;
