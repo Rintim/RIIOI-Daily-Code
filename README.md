@@ -4,41 +4,38 @@
 
 # Today Question
 
-## Circle and Rectangle Overlapping
+## Find the Pivot Integer
 
-You are given a circle represented as `(radius, xCenter, yCenter)` and an axis-aligned rectangle represented as `(x1, y1, x2, y2)`, where `(x1, y1)` are the coordinates of the bottom-left corner, and `(x2, y2)` are the coordinates of the top-right corner of the rectangle.
+Given a positive integer `n`, find the **pivot integer** `x` such that:
 
-Return `true` if the circle and rectangle are overlapped otherwise return `false`. In other words, check if there is **any** point (xi, yi) that belongs to the circle and the rectangle at the same time.
+- The sum of all elements between `1` and `x` inclusively equals the sum of all elements between `x` and `n` inclusively.
+
+Return the pivot integer `x`. If no such integer exists, return `-1`. It is guaranteed that there will be at most one pivot index for the given input.
 
 ### Example 1:
 
-![sample_4_1728.png](https://assets.leetcode.com/uploads/2020/02/20/sample_4_1728.png)
-
 ```
-Input: radius = 1, xCenter = 0, yCenter = 0, x1 = 1, y1 = -1, x2 = 3, y2 = 1
-Output: true
-Explanation: Circle and rectangle share the point (1,0).
+Input: n = 8
+Output: 6
+Explanation: 6 is the pivot integer since: 1 + 2 + 3 + 4 + 5 + 6 = 6 + 7 + 8 = 21.
 ```
 
 ### Example 2:
 
 ```
-Input: radius = 1, xCenter = 1, yCenter = 1, x1 = 1, y1 = -3, x2 = 2, y2 = -1
-Output: false
+Input: n = 1
+Output: 1
+Explanation: 1 is the pivot integer since: 1 = 1.
 ```
 
 ### Example 3:
 
-![sample_2_1728.png](https://assets.leetcode.com/uploads/2020/02/20/sample_2_1728.png)
-
 ```
-Input: radius = 1, xCenter = 0, yCenter = 0, x1 = -1, y1 = 0, x2 = 0, y2 = 1
-Output: true
+Input: n = 4
+Output: -1
+Explanation: It can be proved that no such integer exist.
 ```
-
+ 
 ### Constraints:
 
-- `1 <= radius <= 2000`
-- `-10^4 <= xCenter, yCenter <= 10^4`
-- `-10^4 <= x1 < x2 <= 10^4`
-- `-10^4 <= y1 < y2 <= 10^4`
+- `1 <= n <= 1000`
