@@ -1,5 +1,7 @@
 .vscode
 
-build/*
+**/build/*
 
-archive/**/**/build/*
+# Not Completed
+**/*.ts
+**/Test.json
